@@ -1,10 +1,12 @@
-use std::{os::unix::net::UnixStream, time::Duration};
+
+use std::time::Duration;
 
 use libusb::{Context, DeviceHandle};
 use serde::{Deserialize, Serialize};
-use unix_ipc_rs::SocketServer;
+use unix_ipc_rs::IPCSocket;
 
-use crate::keyboards::{g15::KeyMapG15, DevConfig, KbVersion};
+
+use crate::keyboards::{g15::G15KeyMap, DevConfig, KbVersion};
 
 impl<'a> ServerDevice<'a> {
     fn print_and_kill(s: impl Into<String>) -> ! {
@@ -76,7 +78,7 @@ impl<'a> ServerDevice<'a> {
                     println!("[Info] Setting up socket connection");
 
                     if let Ok(mut server) =
-                        unix_ipc_rs::SocketServer::new("/tmp/logitech_mod_keys_rs.sock")
+                        IPCSocket::new_server("/tmp/logitech_mod_keys_rs.sock")
                     {
                         println!("[Info] Socket connection created");
                         return Ok(Self {
@@ -117,16 +119,16 @@ impl<'a> ServerDevice<'a> {
                     .read_interrupt(self.config.endpoint, &mut buf, Duration::default());
 
             self.socket.send::<Message>(Message(buf));
-            println!("[Info] KeyEvent: {:#?} ", KeyMapG15::from_buffer(buf));
+            println!("[Info] KeyEvent: {:#?} ", G15KeyMap::from_buffer(buf));
         }
     }
 }
 
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Message([u8; 8]);
+pub struct Message(pub [u8; 8]);
 
 pub struct ServerDevice<'a> {
     pub handler: DeviceHandle<'a>,
     pub config: DevConfig,
-    pub socket: SocketServer,
+    pub socket: IPCSocket,
 }

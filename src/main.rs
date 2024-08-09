@@ -11,6 +11,7 @@ use std::{
 
 use args::{AppArgs, Mode};
 use clap::Parser;
+use client::ClientProcess;
 use keyboards::DevConfig;
 use libusb::{Context, Device, DeviceHandle};
 use serde::{de::DeserializeOwned, Deserialize, Serialize};
@@ -22,21 +23,27 @@ mod error;
 mod keyboards;
 mod server;
 
-
-
-
 fn main() -> crate::error::Result<()> {
-       let ctx: Context = libusb::Context::new().unwrap();
+    let ctx: Context = libusb::Context::new().unwrap();
 
-       let args = AppArgs::parse();
+    let args = AppArgs::parse();
 
-       match args.mode {
-           Mode::Server => ServerDevice::new(&ctx, args.keyboard)?.read_interrupt_looped(),
-           Mode::Client => todo!(),
-       }
+    match args.mode {
+        Mode::Server => {
+            println!("[Info] Running in server mode.");
+            ServerDevice::new(&ctx, args.keyboard)?.read_interrupt_looped()
+        }
+        Mode::Client => {
+            println!("[Info] Running in client mode.");
+            if let Some(mappings) = args.config {
+                let mut client = ClientProcess::new();
+                client.process_key_events(args.keyboard, &mappings);
+            } else {
+                println!("[Error] You should provide a mappings config.");
+                std::process::exit(1);
+            }
+        }
+    }
 
-    
     Ok(())
 }
-
-

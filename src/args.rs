@@ -29,12 +29,12 @@ pub struct AppArgs {
     #[arg(short)]
     pub mode: Mode,
  
-    // Device name (VendorId:DeviceId) obtain with lsusb.
-    #[arg(short)]
-    pub device: Option<String>,
-
-
     /// Logitch keyboard model: [G15, G19].
     #[arg(short)]
     pub keyboard: Option<KbVersion>,
+
+    /// The path to the mapping config.toml
+    #[arg(short)]
+    pub config: Option<String>
+    
 }
