@@ -30,6 +30,7 @@ Options:
 
 ## Example Config for G15 Keyboards
 
+
 ```toml
 [Normal]
 G1 = "<Super>+1"
@@ -116,18 +117,99 @@ G12 = "<Super>+2"
 
 
 [M3]
-G1 = "<Super>+1"
-G2 = "<Super>+2"
-G3 = "<Super>+3"
-G4 = "<Super>+4"
-G5 = "<Super>+5"
-G6 = "<Super>+6"
-G7 = "<Super>+7"
-G8 = "<Super>+8"
-G9 = "<Super>+9"
-G10 = "<Super>+0"
-G11 = "<Super>+1"
-G12 = "<Super>+2"
+G1 = "<Super>+1 1"
+G2 = "<Super>+2 2"
+G3 = "<Super>+3 3"
+G4 = "<Super>+4 4"
+G5 = "<Super>+5 5"
+G6 = "<Super>+6 6"
+G7 = "<Super>+7 7"
+G8 = "<Super>+8 8"
+G9 = "<Super>+9 9"
+G10 = "<Super>+0 0"
+G11 = "<Super>+1 1"
+G12 = "<Super>+2 2"
 
+
+```
+
+
+## Valid mappings that can be used
+All the modifiers like Super,Shift,Alt etc need to be used inbetween <>
+so `Super` becomes `<Super>` etc
+combinations are allowed, let `<Super>+1 gh` this will first activate `<Super+1>` and then will run  `gh` afterwords 
+
+```rust
+  match s {
+        "Space" => Self::Space,
+        "Enter" => Self::Enter,
+
+        "Super" => Self::Super,
+        "RSuper" => Self::RSuper,
+        "LSuper" => Self::LSuper,
+
+        "Ctrl" => Self::Ctrl,
+        "RCtrl" => Self::RCtrl,
+        "LCtrl" => Self::LCtrl,
+
+        "Alt" => Self::Alt,
+        "RAlt" => Self::RAlt,
+        "LAlt" => Self::LAlt,
+
+        "Shift" => Self::Shift,
+        "LShift" => Self::LShift,
+        "TShift" => Self::RShift,
+
+        "+" => Self::Plus,
+        "-" => Self::Minus,
+        "[" => Self::LeftBrace,
+        "]" => Self::RightBrace,
+        "." => Self::Dot,
+        "," => Self::Comma,
+        "/" => Self::Slash,
+        "\\" => Self::BackSlash,
+        "'" => Self::Apostrophe,
+        ";" => Self::SemiColon,
+
+        "a" => Self::A,
+        "b" => Self::B,
+        "c" => Self::C,
+        "d" => Self::D,
+        "e" => Self::E,
+        "f" => Self::F,
+        "g" => Self::G,
+        "h" => Self::H,
+        "i" => Self::I,
+        "j" => Self::J,
+        "k" => Self::K,
+        "l" => Self::L,
+        "m" => Self::M,
+        "n" => Self::N,
+        "o" => Self::O,
+        "p" => Self::P,
+        "q" => Self::Q,
+        "r" => Self::R,
+        "s" => Self::S,
+        "t" => Self::T,
+        "u" => Self::U,
+        "v" => Self::V,
+        "w" => Self::W,
+        "x" => Self::X,
+        "y" => Self::Y,
+        "z" => Self::Z,
+        
+        "1" => Self::_1,
+        "2" => Self::_2,
+        "3" => Self::_3,
+        "4" => Self::_4,
+        "5" => Self::_5,
+        "6" => Self::_6,
+        "7" => Self::_7,
+        "8" => Self::_8,
+        "9" => Self::_9,
+        "0" => Self::_0,
+
+        _ => Self::Deliminator,
+        }
 
 ```
