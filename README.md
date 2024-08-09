@@ -2,8 +2,8 @@
 
 This is still a work in progress.
 But this is a program to configure logitech gaming keyboards like the G15 or G19,
-you can easily configure the modkeys using a yaml file.
-
+you can easily configure the modkeys using a toml file.
+ 
 The keyboard starts in Normal mode, you can switch between modes with the M1, M2, M3 buttons
 you can reset to Normal mode by pressing MR
 
