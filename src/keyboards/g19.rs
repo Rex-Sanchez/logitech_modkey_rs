@@ -169,6 +169,7 @@ impl G19Mod {
                 m2_map.insert(G19KeyMap::G12, val);
             }
         }
+
         if let Some(m3) = mappings.M3 {
             if let Some(val) = m3.G1 {
                 m3_map.insert(G19KeyMap::G1, val);
@@ -274,6 +275,7 @@ impl G19KeyMap {
             _ => Self::Unknown,
         }
     }
+    // TODO! this needs the codes from the G19
     pub fn from_buffer(b: [u8; 8]) -> G19KeyMap {
         if (b[1] & 0x01) == 1 {
             return Self::G1;

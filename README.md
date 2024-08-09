@@ -20,7 +20,7 @@ Usage: logitech_mod_keys_rs [OPTIONS] -m <MODE>
 
 Options:
   -m <MODE>          Operation mode: [server, client]
-  -k <KEYBOARD>      Logitch keyboard model: [G15, G19]
+  -k <KEYBOARD>      Logitech keyboard model: [G15, G19]
   -c <CONFIG>        The path to the mapping config.toml
   -h, --help         Print help
   -V, --version      Print version

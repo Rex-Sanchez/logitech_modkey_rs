@@ -29,7 +29,7 @@ pub struct AppArgs {
     #[arg(short)]
     pub mode: Mode,
  
-    /// Logitch keyboard model: [G15, G19].
+    /// Logitech keyboard model: [G15, G19].
     #[arg(short)]
     pub keyboard: Option<KbVersion>,
 
