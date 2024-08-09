@@ -158,7 +158,7 @@ combinations are allowed, let `<Super>+1 gh` this will first activate `<Super+1>
 
         "Shift" => Self::Shift,
         "LShift" => Self::LShift,
-        "TShift" => Self::RShift,
+        "RShift" => Self::RShift,
 
         "+" => Self::Plus,
         "-" => Self::Minus,
