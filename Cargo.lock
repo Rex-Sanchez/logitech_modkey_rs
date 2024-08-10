@@ -105,9 +105,9 @@ checksum = "4785bdd1c96b2a846b2bd7cc02e86b6b3dbf14e7e53446c4f54c92a361040822"
 
 [[package]]
 name = "clap"
-version = "4.5.14"
+version = "4.5.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c937d4061031a6d0c8da4b9a4f98a172fc2976dfb1c19213a9cf7d0d3c837e36"
+checksum = "11d8838454fda655dafd3accb2b6e2bea645b9e4078abe84a22ceb947235c5cc"
 dependencies = [
  "clap_builder",
  "clap_derive",
@@ -115,9 +115,9 @@ dependencies = [
 
 [[package]]
 name = "clap_builder"
-version = "4.5.14"
+version = "4.5.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "85379ba512b21a328adf887e85f7742d12e96eb31f3ef077df4ffc26b506ffed"
+checksum = "216aec2b177652e3846684cbfe25c9964d18ec45234f0f5da5157b207ed1aab6"
 dependencies = [
  "anstream",
  "anstyle",
@@ -465,7 +465,7 @@ checksum = "3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b"
 [[package]]
 name = "unix_ipc_rs"
 version = "0.1.0"
-source = "git+https://github.com/Rex-Sanchez/unix_ipc_rs.git#0317b82f93993ba99c7b633086b624af7bb547b5"
+source = "git+https://github.com/Rex-Sanchez/unix_ipc_rs.git#ea3a4126403f57044c98ffed54d6200a369669ce"
 dependencies = [
  "bincode",
  "serde",
@@ -496,7 +496,7 @@ checksum = "06abde3611657adf66d383f00b093d7faecc7fa57071cce2578660c9f1010821"
 [[package]]
 name = "virtual_keyboard_rs"
 version = "0.1.0"
-source = "git+https://github.com/Rex-Sanchez/virtual_keyboard_rs.git#fa832274e2324e403e4c879072b8c71a7467d605"
+source = "git+https://github.com/Rex-Sanchez/virtual_keyboard_rs.git#09a5d042d966f60affca65f5eb835b41387d4476"
 dependencies = [
  "uinput",
 ]

@@ -1,10 +1,8 @@
-
 use std::time::Duration;
 
 use libusb::{Context, DeviceHandle};
 use serde::{Deserialize, Serialize};
 use unix_ipc_rs::IPCSocket;
-
 
 use crate::keyboards::{g15::G15KeyMap, DevConfig, KbVersion};
 
@@ -77,8 +75,7 @@ impl<'a> ServerDevice<'a> {
                     );
                     println!("[Info] Setting up socket connection");
 
-                    if let Ok(mut server) =
-                        IPCSocket::new_server("/tmp/logitech_mod_keys_rs.sock")
+                    if let Ok(mut server) = IPCSocket::new_server("/tmp/logitech_mod_keys_rs.sock")
                     {
                         println!("[Info] Socket connection created");
                         return Ok(Self {
@@ -113,6 +110,10 @@ impl<'a> ServerDevice<'a> {
     pub fn read_interrupt_looped(&mut self) -> ! {
         println!("[Info] Waiting for keyevents");
         loop {
+            if !self.socket.is_client_connected() {
+                println!("[Info] Client hes disconnected.");
+                self.socket.reconnect();
+            }
             let mut buf: [u8; 8] = [0; 8];
             let _ =
                 self.handler
